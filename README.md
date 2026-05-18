@@ -23,11 +23,24 @@ A aplicacao implementa um modulo de teleconsultoria para profissionais da Atenca
 
 ## Execucao rapida
 
+Requisitos:
+
+- Node.js 20 ou superior.
+- npm 10 ou superior.
+
+Passo a passo a partir da raiz do projeto:
+
 ```powershell
 npm install
+Copy-Item .env.example apps/api/.env
 npm run db:migrate
 npm run db:seed
 npm run dev:api
+```
+
+Em outro terminal:
+
+```powershell
 npm run dev:web
 ```
 
@@ -36,6 +49,13 @@ URLs previstas:
 - Frontend: `http://localhost:3000`
 - API: `http://localhost:3333`
 - Swagger: `http://localhost:3333/docs`
+
+Se o ambiente local apresentar erro de certificado durante downloads do npm ou Prisma, use somente no comando local:
+
+```powershell
+npm install --strict-ssl=false --no-audit --no-fund
+$env:NODE_OPTIONS="--use-system-ca"; npm run db:migrate
+```
 
 ## Usuarios de exemplo
 
@@ -55,6 +75,42 @@ Depois do seed:
 7. Confirmar que o status mudou para `Concluida`.
 8. Entrar novamente como solicitante e conferir a notificacao.
 9. Exportar o resumo em PDF.
+
+## Validacao inteligente de documentos
+
+A validacao fica em `apps/api/src/document-validation/document-validation.service.ts`.
+
+Variaveis principais:
+
+- `DOCUMENT_VALIDATION_PROVIDER`: identifica o provider usado. O valor padrao e `mock`.
+- `DOCUMENT_VALIDATION_THRESHOLD`: limiar minimo de aceite. O padrao e `0.70`.
+
+O provider mockado aceita PDF, PNG e JPEG. Arquivos com nomes como `laudo-clinico.pdf` recebem score alto para facilitar o fluxo feliz. Arquivos com `teste-baixo-score` ou `invalid` no nome simulam baixa confianca e retornam rejeicao com score, motivo, provider e limiar.
+
+Para substituir por uma IA real, mantenha o contrato de retorno `{ score, provider, threshold, accepted, reason }` e troque a implementacao do service por uma chamada a API/modelo externo. A persistencia ja grava score, provider, limiar, aceite, motivo e timestamp.
+
+## Testes e qualidade
+
+```powershell
+npm test
+npm run build
+```
+
+Cobertura atual de testes automatizados:
+
+- Cadastro/login e regras basicas de perfil.
+- Validacao mockavel de documentos, incluindo limiar configuravel e rejeicao.
+- Listagem com escopo por solicitante e filtro de datas.
+- Bloqueio de criacao por especialista.
+- Rejeicao de upload abaixo do limiar.
+- Registro de parecer apenas pelo especialista responsavel, conclusao de status e notificacao.
+
+## Documentacao tecnica
+
+- Checklist de aderencia ao PDF: `docs/checklists/pdf-requirements.md`.
+- Arquitetura e C4 basico: `docs/architecture.md`.
+- ADRs: `docs/adr/`.
+- Swagger/OpenAPI em runtime: `http://localhost:3333/docs`.
 
 ## Ferramentas de IA utilizadas
 

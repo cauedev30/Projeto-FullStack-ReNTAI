@@ -4,42 +4,42 @@ Fonte canonica: `C:\Users\CAUÊ\Desktop\Desafio_P01_Fullstack_ReNTAI.docx.pdf`
 
 ## Funcionalidades obrigatorias
 
-- [ ] Cadastro com selecao de perfil: Solicitante ou Especialista.
-- [ ] Autenticacao com sessao gerenciada por token.
-- [ ] Controle de acesso por perfil nas rotas relevantes.
-- [ ] Dashboard com ID, paciente, especialidade, data e status.
-- [ ] Busca por especialidade ou nome do paciente.
-- [ ] Filtros por status e intervalo de datas.
-- [ ] Botao Nova Teleconsultoria apenas para Solicitante.
-- [ ] Botao Ver detalhes em cada registro.
-- [ ] Formulario com paciente, data de nascimento, especialidade, hipotese diagnostica e historia clinica.
-- [ ] Upload de PDF ou imagem.
-- [ ] Validacao inteligente no momento do upload.
-- [ ] Provider de IA real/mockado com interface documentada e substituivel.
-- [ ] Limiar configuravel por variavel de ambiente.
-- [ ] Rejeicao do upload com mensagem clara e score quando abaixo do limiar.
-- [ ] Persistencia de score, provedor, limiar e timestamp.
-- [ ] Tela de detalhes com dados clinicos resumidos.
-- [ ] Linha do tempo de status.
-- [ ] Pareceres registrados pelo especialista.
-- [ ] Botao Registrar Parecer apenas para especialista responsavel.
-- [ ] Exportacao do resumo em PDF.
-- [ ] Notificacao em tempo real ao solicitante quando parecer for registrado.
-- [ ] Atualizacao automatica do status para Concluida ao registrar parecer.
+- [x] Cadastro com selecao de perfil: Solicitante ou Especialista. Evidencia: `apps/web/src/app/page.tsx`, `apps/api/src/auth/auth.service.ts`.
+- [x] Autenticacao com sessao gerenciada por token. Evidencia: JWT em `AuthService`, guarda em `AuthGuard`, storage web em `apps/web/src/lib/api.ts`.
+- [x] Controle de acesso por perfil nas rotas relevantes. Evidencia: `RolesGuard`, `@Roles`, testes em `teleconsultations.service.spec.ts`.
+- [x] Dashboard com ID, paciente, especialidade, data e status. Evidencia: `apps/web/src/app/dashboard/page.tsx`.
+- [x] Busca por especialidade ou nome do paciente. Evidencia: `TeleconsultationsService.list`.
+- [x] Filtros por status e intervalo de datas. Evidencia: dashboard e teste `inclui o dia inteiro no filtro final dateTo`.
+- [x] Botao Nova Teleconsultoria apenas para Solicitante. Evidencia: `AppShell` e dashboard.
+- [x] Botao Ver detalhes em cada registro. Evidencia: `apps/web/src/app/dashboard/page.tsx`.
+- [x] Formulario com paciente, data de nascimento, especialidade, hipotese diagnostica e historia clinica. Evidencia: `apps/web/src/app/teleconsultations/new/page.tsx`.
+- [x] Upload de PDF ou imagem. Evidencia: input web e `FileInterceptor` no controller.
+- [x] Validacao inteligente no momento do upload. Evidencia: `TeleconsultationsService.create`.
+- [x] Provider de IA real/mockado com interface documentada e substituivel. Evidencia: `DocumentValidationService`, README e ADR 0003.
+- [x] Limiar configuravel por variavel de ambiente. Evidencia: `DOCUMENT_VALIDATION_THRESHOLD` e testes de validacao.
+- [x] Rejeicao do upload com mensagem clara e score quando abaixo do limiar. Evidencia: `TeleconsultationsService.create` e teste de rejeicao.
+- [x] Persistencia de score, provedor, limiar e timestamp. Evidencia: modelo `DocumentValidation` no Prisma.
+- [x] Tela de detalhes com dados clinicos resumidos. Evidencia: `apps/web/src/app/teleconsultations/[id]/page.tsx`.
+- [x] Linha do tempo de status. Evidencia: `StatusHistory` e tela de detalhes.
+- [x] Pareceres registrados pelo especialista. Evidencia: endpoint `POST /teleconsultations/:id/opinions`.
+- [x] Botao Registrar Parecer apenas para especialista responsavel. Evidencia: condicional `canRegisterOpinion` na tela de detalhes.
+- [x] Exportacao do resumo em PDF. Evidencia: `GET /teleconsultations/:id/export.pdf`.
+- [x] Notificacao em tempo real ao solicitante quando parecer for registrado. Evidencia: `TeleconsultationsGateway` e dashboard Socket.IO.
+- [x] Atualizacao automatica do status para Concluida ao registrar parecer. Evidencia: `registerOpinion` e teste dedicado.
 
 ## README
 
-- [ ] Arquitetura da solucao.
-- [ ] Instrucoes para subir do zero.
-- [ ] Como configurar/substituir validacao de IA.
-- [ ] Como testar fluxo completo.
-- [ ] Limitacoes conhecidas e producao.
-- [ ] Ferramentas de IA utilizadas.
+- [x] Arquitetura da solucao.
+- [x] Instrucoes para subir do zero.
+- [x] Como configurar/substituir validacao de IA.
+- [x] Como testar fluxo completo.
+- [x] Limitacoes conhecidas e producao.
+- [x] Ferramentas de IA utilizadas.
 
 ## Bonus
 
-- [ ] Swagger/OpenAPI.
-- [ ] ADRs.
-- [ ] Diagrama C4.
-- [ ] Documentacao explicita de trade-offs.
-- [ ] Testes dos fluxos criticos.
+- [x] Swagger/OpenAPI. Evidencia: `SwaggerModule.setup("docs", ...)`.
+- [x] ADRs. Evidencia: `docs/adr/`.
+- [x] Diagrama C4. Evidencia: `docs/architecture.md`.
+- [x] Documentacao explicita de trade-offs. Evidencia: README, arquitetura e ADRs.
+- [x] Testes dos fluxos criticos. Evidencia: `npm test`, 13 testes de API e smoke web.
