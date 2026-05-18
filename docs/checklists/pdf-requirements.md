@@ -1,6 +1,8 @@
-# Checklist de Conformidade com o PDF
+# Rastreamento de Requisitos do PDF
 
 Fonte canonica: `C:\Users\CAUÊ\Desktop\Desafio_P01_Fullstack_ReNTAI.docx.pdf`
+
+Este documento registra o que ja existe no projeto e onde cada item pode ser verificado. A validacao manual final do fluxo deve ser registrada antes da entrega.
 
 ## Funcionalidades obrigatorias
 
@@ -15,7 +17,7 @@ Fonte canonica: `C:\Users\CAUÊ\Desktop\Desafio_P01_Fullstack_ReNTAI.docx.pdf`
 - [x] Formulario com paciente, data de nascimento, especialidade, hipotese diagnostica e historia clinica. Evidencia: `apps/web/src/app/teleconsultations/new/page.tsx`.
 - [x] Upload de PDF ou imagem. Evidencia: input web e `FileInterceptor` no controller.
 - [x] Validacao inteligente no momento do upload. Evidencia: `TeleconsultationsService.create`.
-- [x] Provider de IA real/mockado com interface documentada e substituivel. Evidencia: `DocumentValidationService`, README e ADR 0003.
+- [x] Provider de IA mockado com interface documentada e substituivel. Evidencia: `DocumentValidationService`, README e ADR 0003.
 - [x] Limiar configuravel por variavel de ambiente. Evidencia: `DOCUMENT_VALIDATION_THRESHOLD` e testes de validacao.
 - [x] Rejeicao do upload com mensagem clara e score quando abaixo do limiar. Evidencia: `TeleconsultationsService.create` e teste de rejeicao.
 - [x] Persistencia de score, provedor, limiar e timestamp. Evidencia: modelo `DocumentValidation` no Prisma.
@@ -24,7 +26,7 @@ Fonte canonica: `C:\Users\CAUÊ\Desktop\Desafio_P01_Fullstack_ReNTAI.docx.pdf`
 - [x] Pareceres registrados pelo especialista. Evidencia: endpoint `POST /teleconsultations/:id/opinions`.
 - [x] Botao Registrar Parecer apenas para especialista responsavel. Evidencia: condicional `canRegisterOpinion` na tela de detalhes.
 - [x] Exportacao do resumo em PDF. Evidencia: `GET /teleconsultations/:id/export.pdf`.
-- [x] Notificacao em tempo real ao solicitante quando parecer for registrado. Evidencia: `TeleconsultationsGateway` e dashboard Socket.IO.
+- [x] Notificacao em tempo real ao solicitante quando parecer for registrado. Evidencia: `TeleconsultationsGateway` e dashboard Socket.IO. Validacao manual recomendada no roteiro do README.
 - [x] Atualizacao automatica do status para Concluida ao registrar parecer. Evidencia: `registerOpinion` e teste dedicado.
 
 ## README
@@ -32,7 +34,7 @@ Fonte canonica: `C:\Users\CAUÊ\Desktop\Desafio_P01_Fullstack_ReNTAI.docx.pdf`
 - [x] Arquitetura da solucao.
 - [x] Instrucoes para subir do zero.
 - [x] Como configurar/substituir validacao de IA.
-- [x] Como testar fluxo completo.
+- [x] Roteiro para testar o fluxo principal manualmente.
 - [x] Limitacoes conhecidas e producao.
 - [x] Ferramentas de IA utilizadas.
 
@@ -42,4 +44,12 @@ Fonte canonica: `C:\Users\CAUÊ\Desktop\Desafio_P01_Fullstack_ReNTAI.docx.pdf`
 - [x] ADRs. Evidencia: `docs/adr/`.
 - [x] Diagrama C4. Evidencia: `docs/architecture.md`.
 - [x] Documentacao explicita de trade-offs. Evidencia: README, arquitetura e ADRs.
-- [x] Testes dos fluxos criticos. Evidencia: `npm test`, 13 testes de API e smoke web.
+- [x] Testes automatizados de regras criticas da API. Evidencia: `npm test` e specs em `apps/api/src`.
+- [ ] Teste automatizado E2E ou de UI do fluxo web. Status atual: frontend possui smoke script e roteiro manual no README.
+
+## Validacao final recomendada
+
+- Executar o fluxo completo no navegador com os usuarios do seed.
+- Confirmar visualmente a notificacao em tempo real ao solicitante.
+- Exportar um PDF real a partir da tela de detalhes.
+- Revisar este rastreamento contra o PDF canonico apos a validacao manual.

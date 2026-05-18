@@ -12,7 +12,13 @@ Este arquivo PDF deve ser usado sempre que houver duvida sobre requisitos, bonus
 
 ## Visao geral
 
-A aplicacao implementa um modulo de teleconsultoria para profissionais da Atencao Primaria a Saude solicitarem apoio de especialistas remotos. O fluxo cobre cadastro, autenticacao, dashboard, criacao de teleconsultoria com upload de documento, validacao inteligente mockavel, atribuicao de especialista, registro de parecer, notificacao em tempo real e exportacao em PDF.
+A aplicacao implementa um modulo de teleconsultoria para profissionais da Atencao Primaria a Saude solicitarem apoio de especialistas remotos. O fluxo implementado em codigo cobre cadastro, autenticacao, dashboard, criacao de teleconsultoria com upload de documento, validacao inteligente mockavel, atribuicao de especialista, registro de parecer, notificacao em tempo real e exportacao em PDF.
+
+Estado atual do projeto:
+
+- Implementado: API principal, frontend principal, Prisma/SQLite, Swagger, ADRs, C4 basico e testes automatizados de servicos da API.
+- Validacao final recomendada: executar o fluxo completo no navegador, confirmar visualmente a notificacao em tempo real e revisar a aderencia final contra o PDF canonico.
+- Melhoria futura: adicionar teste E2E ou teste automatizado de UI para o fluxo web.
 
 ## Stack
 
@@ -64,7 +70,7 @@ Depois do seed:
 - Solicitante: `solicitante@rentai.local` / `123456`
 - Especialista: `especialista@rentai.local` / `123456`
 
-## Fluxo principal de teste
+## Roteiro do fluxo principal de teste
 
 1. Entrar como solicitante.
 2. Criar uma nova teleconsultoria com documento PDF ou imagem.
@@ -75,6 +81,8 @@ Depois do seed:
 7. Confirmar que o status mudou para `Concluida`.
 8. Entrar novamente como solicitante e conferir a notificacao.
 9. Exportar o resumo em PDF.
+
+Este roteiro serve para a validacao manual final do fluxo ponta a ponta.
 
 ## Validacao inteligente de documentos
 
@@ -96,7 +104,7 @@ npm test
 npm run build
 ```
 
-Cobertura atual de testes automatizados:
+Cobertura atual de testes automatizados da API:
 
 - Cadastro/login e regras basicas de perfil.
 - Validacao mockavel de documentos, incluindo limiar configuravel e rejeicao.
@@ -104,6 +112,8 @@ Cobertura atual de testes automatizados:
 - Bloqueio de criacao por especialista.
 - Rejeicao de upload abaixo do limiar.
 - Registro de parecer apenas pelo especialista responsavel, conclusao de status e notificacao.
+
+No frontend, o script atual e um smoke de configuracao. A validacao funcional do fluxo web esta descrita no roteiro manual acima.
 
 ## Documentacao tecnica
 
