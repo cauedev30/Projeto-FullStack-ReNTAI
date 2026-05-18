@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.next/
+coverage/
+uploads/
+docs/session-notes/
+*.db
+*.db-journal
+.env
+.env.local
+.DS_Store
+npm-debug.log*
+.codex/autonomous-progress.local.md
