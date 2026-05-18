@@ -10,4 +10,5 @@ docs/session-notes/
 .env.local
 .DS_Store
 npm-debug.log*
+*.tsbuildinfo
 .codex/autonomous-progress.local.md

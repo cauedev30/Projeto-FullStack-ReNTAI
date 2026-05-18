@@ -6,8 +6,8 @@
     "dev": "tsx watch src/main.ts",
     "build": "tsc -p tsconfig.build.json",
     "start": "node dist/main.js",
-    "lint": "eslint \"src/**/*.ts\" \"test/**/*.ts\"",
-    "test": "jest --passWithNoTests",
+    "lint": "eslint \"src/**/*.ts\" \"prisma/**/*.ts\"",
+    "test": "jest --runInBand",
     "db:migrate": "prisma migrate dev --name init",
     "db:seed": "tsx prisma/seed.ts",
     "db:generate": "prisma generate"

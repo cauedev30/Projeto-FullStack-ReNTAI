@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  SOLICITANT
+  SPECIALIST
+}
+
+enum TeleconsultationStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  CANCELED
+}
+
+enum Specialty {
+  CARDIOLOGY
+  ROBOTIC_SURGERY
+  DENTISTRY
+  RARE_DISEASES
+  OXYGEN_THERAPY
+}
+
+model User {
+  id                         String               @id @default(cuid())
+  name                       String
+  email                      String               @unique
+  passwordHash               String
+  role                       UserRole
+  specialty                  Specialty?
+  createdAt                  DateTime             @default(now())
+  requestedTeleconsultations Teleconsultation[]    @relation("SolicitantTeleconsultations")
+  assignedTeleconsultations  Teleconsultation[]    @relation("SpecialistTeleconsultations")
+  opinions                   Opinion[]
+}
+
+model Teleconsultation {
+  id                    String                 @id @default(cuid())
+  patientName           String
+  patientBirthDate      DateTime
+  specialty             Specialty
+  diagnosticHypothesis  String
+  clinicalHistory       String
+  status                TeleconsultationStatus @default(PENDING)
+  supportDocumentName   String
+  supportDocumentPath   String
+  supportDocumentMime   String
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  solicitantId          String
+  specialistId          String?
+  solicitant            User                   @relation("SolicitantTeleconsultations", fields: [solicitantId], references: [id])
+  specialist            User?                  @relation("SpecialistTeleconsultations", fields: [specialistId], references: [id])
+  validation            DocumentValidation?
+  statusHistory         StatusHistory[]
+  opinions              Opinion[]
+}
+
+model DocumentValidation {
+  id                    String             @id @default(cuid())
+  teleconsultationId    String             @unique
+  score                 Float
+  provider              String
+  threshold             Float
+  accepted              Boolean
+  reason                String
+  createdAt             DateTime           @default(now())
+  teleconsultation      Teleconsultation    @relation(fields: [teleconsultationId], references: [id])
+}
+
+model StatusHistory {
+  id                    String                 @id @default(cuid())
+  teleconsultationId    String
+  status                TeleconsultationStatus
+  description           String
+  createdAt             DateTime               @default(now())
+  teleconsultation      Teleconsultation        @relation(fields: [teleconsultationId], references: [id])
+}
+
+model Opinion {
+  id                    String             @id @default(cuid())
+  teleconsultationId    String
+  specialistId          String
+  content               String
+  createdAt             DateTime           @default(now())
+  teleconsultation      Teleconsultation    @relation(fields: [teleconsultationId], references: [id])
+  specialist            User               @relation(fields: [specialistId], references: [id])
+}
