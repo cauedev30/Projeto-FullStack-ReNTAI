@@ -4,6 +4,8 @@ Fonte canonica: `C:\Users\CAUÊ\Desktop\Desafio_P01_Fullstack_ReNTAI.docx.pdf`
 
 Este documento registra o que ja existe no projeto e onde cada item pode ser verificado. A validacao manual final do fluxo deve ser registrada antes da entrega.
 
+Primeira validacao manual registrada em `docs/validation/2026-05-18-primeira-validacao-manual.md`.
+
 ## Funcionalidades obrigatorias
 
 - [x] Cadastro com selecao de perfil: Solicitante ou Especialista. Evidencia: `apps/web/src/app/page.tsx`, `apps/api/src/auth/auth.service.ts`.

@@ -44,7 +44,8 @@ export default function DetailPage({ params }: { params: Promise<{ id: string }>
   async function registerOpinion(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError("");
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const data = new FormData(form);
 
     try {
       const result = await apiFetch<Teleconsultation>(`/teleconsultations/${id}/opinions`, {
@@ -52,7 +53,7 @@ export default function DetailPage({ params }: { params: Promise<{ id: string }>
         body: JSON.stringify({ content: data.get("content") })
       });
       setItem(result);
-      event.currentTarget.reset();
+      form.reset();
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : "Falha ao registrar parecer.");
     }
