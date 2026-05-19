@@ -26,6 +26,7 @@ Validacao manual executada no clone local do projeto, com API e Web rodando em a
 - Linha do tempo registrou a conclusao.
 - Novo parecer registrado apos a correcao do bug abaixo, sem exibir erro na tela.
 - Exportacao do resumo em PDF validada pelo endpoint autenticado e pelo botao da tela de detalhes.
+- Notificacao em tempo real validada com uma sessao conectada como solicitante enquanto um novo parecer era registrado pelo especialista.
 
 ## Evidencias tecnicas observadas
 
@@ -42,6 +43,17 @@ Validacao manual executada no clone local do projeto, com API e Web rodando em a
   - status `COMPLETED` apos registrar parecer.
 - Exportacao autenticada retornou arquivo com cabecalho `%PDF-` e conteudo esperado do resumo da teleconsultoria.
 - PDF aberto pela interface exibiu dados do paciente, informacoes clinicas, validacao do documento e pareceres registrados.
+- Cliente Socket.IO conectado com token do solicitante recebeu o evento `opinion.registered` apos o registro de um novo parecer.
+- Payload recebido na notificacao:
+
+```json
+{
+  "teleconsultationId": "cmpbvlwwr0001uyrof8wmqd9p",
+  "patientName": "caue",
+  "status": "COMPLETED",
+  "message": "Um parecer foi registrado para sua teleconsultoria."
+}
+```
 
 ## Bug encontrado
 
@@ -76,5 +88,4 @@ form.reset();
 
 ## Ainda nao validado nesta rodada
 
-- Notificacao em tempo real observada no navegador do solicitante.
 - Teste automatizado E2E ou de UI para o fluxo web.

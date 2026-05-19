@@ -28,7 +28,7 @@ Primeira validacao manual registrada em `docs/validation/2026-05-18-primeira-val
 - [x] Pareceres registrados pelo especialista. Evidencia: endpoint `POST /teleconsultations/:id/opinions`.
 - [x] Botao Registrar Parecer apenas para especialista responsavel. Evidencia: condicional `canRegisterOpinion` na tela de detalhes.
 - [x] Exportacao do resumo em PDF. Evidencia: `GET /teleconsultations/:id/export.pdf` e validacao manual registrada em `docs/validation/2026-05-18-primeira-validacao-manual.md`.
-- [x] Notificacao em tempo real ao solicitante quando parecer for registrado. Evidencia: `TeleconsultationsGateway` e dashboard Socket.IO. Validacao manual recomendada no roteiro do README.
+- [x] Notificacao em tempo real ao solicitante quando parecer for registrado. Evidencia: `TeleconsultationsGateway`, dashboard Socket.IO e validacao registrada em `docs/validation/2026-05-18-primeira-validacao-manual.md`.
 - [x] Atualizacao automatica do status para Concluida ao registrar parecer. Evidencia: `registerOpinion` e teste dedicado.
 
 ## README
@@ -52,5 +52,4 @@ Primeira validacao manual registrada em `docs/validation/2026-05-18-primeira-val
 ## Validacao final recomendada
 
 - Executar o fluxo completo no navegador com os usuarios do seed.
-- Confirmar visualmente a notificacao em tempo real ao solicitante.
 - Revisar este rastreamento contra o PDF canonico apos a validacao manual.
