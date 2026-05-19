@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tsx watch src/main.ts",
     "build": "tsc -p tsconfig.build.json",
-    "start": "node dist/main.js",
+    "start": "node dist/src/main.js",
     "lint": "eslint \"src/**/*.ts\" \"prisma/**/*.ts\"",
     "test": "jest --runInBand",
     "db:migrate": "prisma migrate dev --name init",

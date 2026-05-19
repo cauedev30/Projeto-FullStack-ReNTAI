@@ -16,9 +16,9 @@ A aplicacao implementa um modulo de teleconsultoria para profissionais da Atenca
 
 Estado atual do projeto:
 
-- Implementado: API principal, frontend principal, Prisma/SQLite, Swagger, ADRs, C4 basico e testes automatizados de servicos da API.
-- Validacao final recomendada: executar o fluxo completo no navegador, confirmar visualmente a notificacao em tempo real e revisar a aderencia final contra o PDF canonico.
-- Melhoria futura: adicionar teste E2E ou teste automatizado de UI para o fluxo web.
+- Implementado: API principal, frontend principal, Prisma/SQLite, Swagger, ADRs, C4 basico, testes automatizados de servicos da API e smoke test de regressao do frontend.
+- Validado: fluxo principal pela UI, exportacao em PDF, notificacao em tempo real, rejeicao por baixo score via API/HTTP e filtros de dashboard via API/HTTP.
+- Melhoria futura: adicionar teste E2E ou teste automatizado de UI para o fluxo web completo.
 
 ## Stack
 
@@ -113,11 +113,12 @@ Cobertura atual de testes automatizados da API:
 - Rejeicao de upload abaixo do limiar.
 - Registro de parecer apenas pelo especialista responsavel, conclusao de status e notificacao.
 
-No frontend, o script atual e um smoke de configuracao. A validacao funcional do fluxo web esta descrita no roteiro manual acima.
+No frontend, o script atual e um smoke test de regressao para proteger o reset do formulario de parecer. A validacao funcional do fluxo web esta descrita no roteiro manual acima e documentada em `docs/validation/2026-05-18-primeira-validacao-manual.md`.
 
 ## Documentacao tecnica
 
 - Checklist de aderencia ao PDF: `docs/checklists/pdf-requirements.md`.
+- Registro de validacao manual e complementar: `docs/validation/2026-05-18-primeira-validacao-manual.md`.
 - Arquitetura e C4 basico: `docs/architecture.md`.
 - ADRs: `docs/adr/`.
 - Swagger/OpenAPI em runtime: `http://localhost:3333/docs`.

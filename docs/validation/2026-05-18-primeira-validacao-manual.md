@@ -89,3 +89,78 @@ form.reset();
 ## Ainda nao validado nesta rodada
 
 - Teste automatizado E2E ou de UI para o fluxo web.
+
+## Validacao complementar em 2026-05-19
+
+Validacao funcional executada no repositorio oficial `C:\Users\CAUÊ\Desktop\Projeto-FullStack-ReNTAI`, remoto `https://github.com/cauedev30/Projeto-FullStack-ReNTAI`.
+
+### Rejeicao por baixo score
+
+- API compilada iniciada com `node dist/src/main.js`.
+- `/docs` respondeu `200`.
+- Login como solicitante usando `solicitante@rentai.local`.
+- Tentativa de criar teleconsultoria com arquivo `teste-baixo-score.pdf`.
+- Resultado: API retornou `400`.
+- Mensagem retornada pela API, exibivel pela UI via `apiFetch`:
+
+```text
+Documento rejeitado pela validacao inteligente. Score: 0.32. Limiar: 0.7.
+```
+
+- Payload de validacao observado:
+
+```json
+{
+  "score": 0.32,
+  "threshold": 0.7,
+  "accepted": false
+}
+```
+
+### Filtros e busca do dashboard
+
+- Criada teleconsultoria aceita com `laudo-clinico.pdf`.
+- Busca por paciente retornou a teleconsultoria criada.
+- Busca por especialidade `Cardiologia` retornou a teleconsultoria criada.
+- Filtro por `status=PENDING`, `dateFrom` e `dateTo` no dia da criacao retornou a teleconsultoria criada.
+
+Resultado observado nos filtros:
+
+```json
+{
+  "status": 200,
+  "found": true,
+  "patientName": "Filtro Oficial 1779208722746",
+  "statusLabel": "PENDING",
+  "specialty": "CARDIOLOGY"
+}
+```
+
+### Correcoes tecnicas aplicadas na retomada
+
+- `apps/api/package.json`: script `start` corrigido para `node dist/src/main.js`, que corresponde ao caminho real gerado pelo build TypeScript.
+- `apps/api/src/main.ts`: bootstrap agora carrega `apps/api/.env` antes de iniciar a aplicacao, permitindo que a API compilada encontre `DATABASE_URL`, `JWT_SECRET`, `PORT`, `WEB_ORIGIN` e configuracoes do provider mockado.
+- `apps/web/scripts/smoke-test.mjs`: smoke test de regressao cobre a referencia estavel do formulario de parecer.
+
+### Verificacoes desta retomada
+
+- `npm test`: passou com 13 testes da API e smoke test do frontend.
+- `npm run build`: passou para API e Web fora do sandbox, apos falha conhecida `spawn EPERM` no build Next dentro do sandbox.
+- `node dist/src/main.js`: API compilada iniciou e `/docs` respondeu `200`.
+
+## Revisao final contra o PDF em 2026-05-19
+
+O checklist `docs/checklists/pdf-requirements.md` foi revisado contra a fonte canonica `C:\Users\CAUÊ\Desktop\Desafio_P01_Fullstack_ReNTAI.docx.pdf`.
+
+Resultado da revisao:
+
+- Todos os requisitos obrigatorios do PDF permanecem cobertos.
+- README contem arquitetura, execucao do zero, configuracao/substituicao da IA, roteiro de teste, limitacoes e declaracao de ferramentas de IA.
+- Bonus documentais atendidos: Swagger/OpenAPI, ADRs, C4 basico e trade-offs.
+- Bonus tecnico atendido parcialmente: testes automatizados cobrem regras criticas da API e um smoke test de regressao do frontend.
+- Bonus nao atendido: teste automatizado E2E ou de UI do fluxo web completo.
+
+Observacao de honestidade da validacao:
+
+- Fluxo principal, parecer, PDF e notificacao em tempo real foram validados manualmente pela UI ou por endpoint autenticado conforme registrado acima.
+- Rejeicao por baixo score e filtros/busca foram validados por API/HTTP em 2026-05-19; a UI usa os mesmos endpoints e propaga mensagens de erro por `apiFetch`.
