@@ -25,6 +25,7 @@ Validacao manual executada no clone local do projeto, com API e Web rodando em a
 - Status mudou para `Concluida`.
 - Linha do tempo registrou a conclusao.
 - Novo parecer registrado apos a correcao do bug abaixo, sem exibir erro na tela.
+- Exportacao do resumo em PDF validada pelo endpoint autenticado e pelo botao da tela de detalhes.
 
 ## Evidencias tecnicas observadas
 
@@ -39,6 +40,8 @@ Validacao manual executada no clone local do projeto, com API e Web rodando em a
   - validacao aceita;
   - status `IN_PROGRESS` apos assumir caso;
   - status `COMPLETED` apos registrar parecer.
+- Exportacao autenticada retornou arquivo com cabecalho `%PDF-` e conteudo esperado do resumo da teleconsultoria.
+- PDF aberto pela interface exibiu dados do paciente, informacoes clinicas, validacao do documento e pareceres registrados.
 
 ## Bug encontrado
 
@@ -73,6 +76,5 @@ form.reset();
 
 ## Ainda nao validado nesta rodada
 
-- Exportacao real do PDF pelo botao da tela.
 - Notificacao em tempo real observada no navegador do solicitante.
 - Teste automatizado E2E ou de UI para o fluxo web.
