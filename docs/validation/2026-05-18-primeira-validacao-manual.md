@@ -180,3 +180,46 @@ Fluxo coberto no navegador:
 - Especialista assume o caso.
 - Especialista registra parecer.
 - Status muda para `Concluida` e parecer aparece na tela.
+
+## Validacao final em 2026-05-20
+
+Revisao executada no clone oficial `C:\Users\CAUÊ\Desktop\Projeto-FullStack-ReNTAI`, usando como referencia o PDF canonico `C:\Users\CAUÊ\Desktop\Desafio_P01_Fullstack_ReNTAI.docx.pdf`.
+
+Resultado da revisao:
+
+- Repositorio remoto confirmado: `https://github.com/cauedev30/Projeto-FullStack-ReNTAI`.
+- Branch `main` sincronizada com `origin/main` antes do registro desta validacao.
+- Ultimo commit validado antes desta anotacao: `91b3ff1 teste: cobre fluxo critico com Playwright E2E`.
+- Nenhum requisito obrigatorio do PDF foi identificado como ausente na revisao final.
+- README, checklist, arquitetura, ADRs, Swagger, testes automatizados e E2E foram conferidos contra o escopo.
+
+Verificacoes executadas:
+
+- `npm test`: passou com 13 testes da API e smoke test do frontend.
+- `npm run lint`: passou para API e Web.
+- `npm run build`: falhou apenas dentro do sandbox com o erro conhecido `spawn EPERM` do Next no Windows; repetido fora do sandbox, passou para API e Web.
+- `$env:PLAYWRIGHT_CHANNEL='chrome'; npm run test:e2e`: passou com 1 teste E2E no Chrome do sistema.
+- API compilada em execucao respondeu `200` em `http://localhost:3333/docs`.
+- Frontend compilado em execucao respondeu `200` em `http://localhost:3000`.
+
+Smoke funcional adicional via API:
+
+```json
+{
+  "loginSolicitante": true,
+  "loginEspecialista": true,
+  "rejeicaoBaixoScoreHttp": 400,
+  "rejeicaoMensagem": "Documento rejeitado pela validacao inteligente. Score: 0.32. Limiar: 0.7.",
+  "criadoStatus": "PENDING",
+  "scoreCriado": 0.94,
+  "provider": "mock",
+  "filtroEncontrou": true,
+  "statusAposAssumir": "IN_PROGRESS",
+  "statusAposParecer": "COMPLETED",
+  "pareceres": 1,
+  "pdfHttp": 200,
+  "pdfHeader": "%PDF-"
+}
+```
+
+Conclusao: projeto revisado e validado para submissao, sem bloqueadores conhecidos de aderencia ao PDF.
