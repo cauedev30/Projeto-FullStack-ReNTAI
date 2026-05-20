@@ -163,11 +163,13 @@ No frontend, o script `npm test -w apps/web` é um smoke test de regressão para
 
 Durante o desenvolvimento deste desafio, utilizei o ChatGPT/Codex como ferramenta de apoio ao desenvolvimento de software.
 
-Usei a IA para analisar o escopo do PDF, apoiar a definição da arquitetura, gerar trechos iniciais de código, revisar consistência entre requisitos e implementação, apoiar testes e melhorar a clareza da documentação.
+A IA foi usada principalmente para apoiar a leitura e organização do escopo do PDF, estruturar a documentação técnica, revisar a aderência entre requisitos e implementação, refinar trechos de código, apoiar a criação de testes e melhorar a clareza do README, ADRs, checklist e registros de validação.
 
-Usei a IA com o contexto do PDF do desafio, das decisões técnicas adotadas no projeto e de critérios de qualidade, rastreabilidade, documentação e aderência aos requisitos obrigatórios.
+Também utilizei a IA como apoio operacional durante o desenvolvimento, incluindo revisão de diffs, organização de commits, mensagens de commit, validações antes de versionar alterações e publicação dos incrementos no GitHub.
 
-A aceitação das funcionalidades foi conferida pelos testes automatizados, pelo fluxo E2E e pelas validações documentadas neste repositório.
+A ferramenta foi orientada com o contexto do desafio, as decisões técnicas adotadas no projeto e critérios de qualidade, rastreabilidade, reprodutibilidade local e aderência aos requisitos obrigatórios.
+
+A aceitação das funcionalidades foi conferida por meio de testes automatizados, fluxo E2E com Playwright, validações manuais documentadas e revisão final dos requisitos do PDF.
 
 O que funcionou bem:
 
