@@ -33,27 +33,37 @@ Requisitos:
 
 - Node.js 20 ou superior.
 - npm 10 ou superior.
+- Portas locais `3000` e `3333` livres.
 
-Passo a passo a partir da raiz do projeto:
+Todos os comandos abaixo devem ser executados a partir da raiz do projeto, no mesmo diretorio deste README.
+
+### Caminho recomendado para subir do zero
+
+```powershell
+npm run setup
+npm run dev
+```
+
+O comando `npm run setup` instala as dependencias, cria `apps/api/.env` a partir de `.env.example` se o arquivo ainda nao existir, aplica a migration SQLite e cria os usuarios de exemplo.
+
+O comando `npm run dev` sobe a API e o frontend juntos.
+
+### Alternativa manual em dois terminais
+
+Se preferir rodar os servicos separadamente, execute primeiro:
 
 ```powershell
 npm install
-Copy-Item .env.example apps/api/.env
+npm run setup:env
 npm run db:migrate
 npm run db:seed
 npm run dev:api
 ```
 
-Em outro terminal:
+Em outro terminal, ainda na raiz do projeto:
 
 ```powershell
 npm run dev:web
-```
-
-Atalho equivalente para preparar dependencias, `.env`, migration e seed:
-
-```powershell
-npm run setup
 ```
 
 URLs previstas:
