@@ -1,6 +1,6 @@
 # ReNTAI Teleconsultoria - Desafio Fullstack P01
 
-Projeto novo e independente para o desafio técnico **P01 - Desenvolvedor(a) Fullstack** do ReNTAI/LAVID/UFPB.
+Projeto para o desafio técnico **P01 - Desenvolvedor(a) Fullstack** do ReNTAI/LAVID/UFPB.
 
 Usei como referência o PDF oficial do desafio P01 para definir requisitos, bônus, documentação e critérios de aceite.
 
@@ -194,3 +194,5 @@ O que foi descartado:
 - SQLite foi escolhido pela simplicidade de execução local; em produção, PostgreSQL seria recomendado.
 - O provider de IA é mockado; em produção, ele seria substituído por um serviço real com auditoria, privacidade e políticas de tratamento de dados clínicos.
 - A autenticação usa JWT simples; em produção, cookies HttpOnly, refresh tokens e rotação de segredo seriam recomendados.
+
+
