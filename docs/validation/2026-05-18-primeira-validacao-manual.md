@@ -92,7 +92,7 @@ form.reset();
 
 ## Validacao complementar em 2026-05-19
 
-Validacao funcional executada no repositorio oficial `C:\Users\CAUÊ\Desktop\Projeto-FullStack-ReNTAI`, remoto `https://github.com/cauedev30/Projeto-FullStack-ReNTAI`.
+Validacao funcional executada no repositorio oficial `https://github.com/cauedev30/Projeto-FullStack-ReNTAI`.
 
 ### Rejeicao por baixo score
 
@@ -148,9 +148,9 @@ Resultado observado nos filtros:
 - `npm run build`: passou para API e Web fora do sandbox, apos falha conhecida `spawn EPERM` no build Next dentro do sandbox.
 - `node dist/src/main.js`: API compilada iniciou e `/docs` respondeu `200`.
 
-## Revisao final contra o PDF em 2026-05-19
+## Revisao de aderencia contra o PDF em 2026-05-19
 
-O checklist `docs/checklists/pdf-requirements.md` foi revisado contra a fonte canonica `C:\Users\CAUÊ\Desktop\Desafio_P01_Fullstack_ReNTAI.docx.pdf`.
+O checklist `docs/checklists/pdf-requirements.md` foi revisado contra o PDF oficial do desafio P01.
 
 Resultado da revisao:
 
@@ -181,16 +181,16 @@ Fluxo coberto no navegador:
 - Especialista registra parecer.
 - Status muda para `Concluida` e parecer aparece na tela.
 
-## Validacao final em 2026-05-20
+## Validacao complementar em 2026-05-20
 
-Revisao executada no clone oficial `C:\Users\CAUÊ\Desktop\Projeto-FullStack-ReNTAI`, usando como referencia o PDF canonico `C:\Users\CAUÊ\Desktop\Desafio_P01_Fullstack_ReNTAI.docx.pdf`.
+Revisao executada no repositorio oficial, usando como referencia o PDF oficial do desafio P01.
 
 Resultado da revisao:
 
 - Repositorio remoto confirmado: `https://github.com/cauedev30/Projeto-FullStack-ReNTAI`.
 - Branch `main` sincronizada com `origin/main` antes do registro desta validacao.
 - Ultimo commit validado antes desta anotacao: `91b3ff1 teste: cobre fluxo critico com Playwright E2E`.
-- Nenhum requisito obrigatorio do PDF foi identificado como ausente na revisao final.
+- Nenhum requisito obrigatorio do PDF foi identificado como ausente na revisao de aderencia.
 - README, checklist, arquitetura, ADRs, Swagger, testes automatizados e E2E foram conferidos contra o escopo.
 
 Verificacoes executadas:

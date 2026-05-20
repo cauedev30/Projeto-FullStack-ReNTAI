@@ -1,12 +1,12 @@
 # Rastreamento de Requisitos do PDF
 
-Fonte canonica: `C:\Users\CAUÊ\Desktop\Desafio_P01_Fullstack_ReNTAI.docx.pdf`
+Fonte de referencia: PDF oficial do desafio P01 ReNTAI.
 
-Este documento registra o que ja existe no projeto e onde cada item pode ser verificado. A validacao manual final do fluxo deve ser registrada antes da entrega.
+Este documento registra o que existe no projeto e onde cada item pode ser verificado. A validacao manual do fluxo esta registrada em documento proprio.
 
 Primeira validacao manual registrada em `docs/validation/2026-05-18-primeira-validacao-manual.md`.
 
-Revisao final contra o PDF canonico realizada em 2026-05-19. Nenhum requisito obrigatorio do PDF ficou marcado como ausente. Apos a revisao final, foi adicionado um teste E2E minimo com Playwright para cobrir o fluxo critico no navegador.
+Revisao de aderencia contra o PDF oficial realizada em 2026-05-19. Nenhum requisito obrigatorio do PDF ficou marcado como ausente. Apos essa revisao, foi adicionado um teste E2E minimo com Playwright para cobrir o fluxo critico no navegador.
 
 ## Funcionalidades obrigatorias
 
