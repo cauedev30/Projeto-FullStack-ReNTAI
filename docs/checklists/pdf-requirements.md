@@ -6,7 +6,7 @@ Este documento registra o que ja existe no projeto e onde cada item pode ser ver
 
 Primeira validacao manual registrada em `docs/validation/2026-05-18-primeira-validacao-manual.md`.
 
-Revisao final contra o PDF canonico realizada em 2026-05-19. Nenhum requisito obrigatorio do PDF ficou marcado como ausente. O unico item nao implementado permanece como bonus opcional: teste automatizado E2E ou de UI do fluxo web completo.
+Revisao final contra o PDF canonico realizada em 2026-05-19. Nenhum requisito obrigatorio do PDF ficou marcado como ausente. Apos a revisao final, foi adicionado um teste E2E minimo com Playwright para cobrir o fluxo critico no navegador.
 
 ## Funcionalidades obrigatorias
 
@@ -49,11 +49,10 @@ Revisao final contra o PDF canonico realizada em 2026-05-19. Nenhum requisito ob
 - [x] Diagrama C4. Evidencia: `docs/architecture.md`.
 - [x] Documentacao explicita de trade-offs. Evidencia: README, arquitetura e ADRs.
 - [x] Testes automatizados de regras criticas da API. Evidencia: `npm test` e specs em `apps/api/src`.
-- [ ] Teste automatizado E2E ou de UI do fluxo web. Status atual: frontend possui smoke script e roteiro manual no README.
+- [x] Teste automatizado E2E ou de UI do fluxo web. Evidencia: `npm run test:e2e`, `playwright.config.ts` e `tests/e2e/teleconsultoria.spec.ts`.
 
 ## Estado final da revisao
 
 - Obrigatorios do PDF: cobertos por implementacao, testes automatizados, validacao manual ou validacao funcional por API/HTTP.
-- Bonus atendidos: Swagger/OpenAPI, ADRs, C4 basico, trade-offs documentados e testes automatizados de regras criticas.
-- Bonus nao atendido: E2E/UI automatizado do fluxo web completo.
-- Observacao: rejeicao por baixo score e filtros do dashboard foram validados por API/HTTP em 2026-05-19; a UI consome as mesmas mensagens e endpoints via `apiFetch`.
+- Bonus atendidos: Swagger/OpenAPI, ADRs, C4 basico, trade-offs documentados, testes automatizados de regras criticas e E2E minimo com Playwright.
+- Observacao: rejeicao por baixo score e filtros do dashboard foram validados por API/HTTP em 2026-05-19 e tambem cobertos pelo E2E minimo no navegador.

@@ -17,8 +17,8 @@ A aplicacao implementa um modulo de teleconsultoria para profissionais da Atenca
 Estado atual do projeto:
 
 - Implementado: API principal, frontend principal, Prisma/SQLite, Swagger, ADRs, C4 basico, testes automatizados de servicos da API e smoke test de regressao do frontend.
-- Validado: fluxo principal pela UI, exportacao em PDF, notificacao em tempo real, rejeicao por baixo score via API/HTTP e filtros de dashboard via API/HTTP.
-- Melhoria futura: adicionar teste E2E ou teste automatizado de UI para o fluxo web completo.
+- Validado: fluxo principal pela UI, exportacao em PDF, notificacao em tempo real, rejeicao por baixo score via API/HTTP, filtros de dashboard via API/HTTP e teste E2E minimo com Playwright.
+- Melhoria futura: ampliar a cobertura E2E para mais perfis, navegadores e cenarios de erro.
 
 ## Stack
 
@@ -104,6 +104,32 @@ npm test
 npm run build
 ```
 
+Teste E2E minimo com Playwright:
+
+```powershell
+npm run test:e2e
+```
+
+Esse teste sobe a API e o frontend compilados e valida no navegador:
+
+- rejeicao de `teste-baixo-score.pdf` com score e limiar;
+- criacao de teleconsultoria com documento aceito;
+- busca/filtros no dashboard;
+- especialista assumindo o caso;
+- registro de parecer e status `Concluida`.
+
+Se o navegador do Playwright ainda nao estiver instalado no ambiente, rode uma vez:
+
+```powershell
+npx playwright install chromium
+```
+
+Em ambientes Windows que ja possuem Google Chrome instalado, tambem e possivel executar usando o navegador do sistema:
+
+```powershell
+$env:PLAYWRIGHT_CHANNEL="chrome"; npm run test:e2e
+```
+
 Cobertura atual de testes automatizados da API:
 
 - Cadastro/login e regras basicas de perfil.
@@ -113,7 +139,7 @@ Cobertura atual de testes automatizados da API:
 - Rejeicao de upload abaixo do limiar.
 - Registro de parecer apenas pelo especialista responsavel, conclusao de status e notificacao.
 
-No frontend, o script atual e um smoke test de regressao para proteger o reset do formulario de parecer. A validacao funcional do fluxo web esta descrita no roteiro manual acima e documentada em `docs/validation/2026-05-18-primeira-validacao-manual.md`.
+No frontend, o script `npm test -w apps/web` e um smoke test de regressao para proteger o reset do formulario de parecer. O script `npm run test:e2e` executa um fluxo minimo no navegador com Playwright. A validacao funcional do fluxo web esta descrita no roteiro manual acima e documentada em `docs/validation/2026-05-18-primeira-validacao-manual.md`.
 
 ## Documentacao tecnica
 

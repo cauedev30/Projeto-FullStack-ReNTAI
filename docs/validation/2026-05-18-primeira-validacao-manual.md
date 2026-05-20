@@ -157,10 +157,26 @@ Resultado da revisao:
 - Todos os requisitos obrigatorios do PDF permanecem cobertos.
 - README contem arquitetura, execucao do zero, configuracao/substituicao da IA, roteiro de teste, limitacoes e declaracao de ferramentas de IA.
 - Bonus documentais atendidos: Swagger/OpenAPI, ADRs, C4 basico e trade-offs.
-- Bonus tecnico atendido parcialmente: testes automatizados cobrem regras criticas da API e um smoke test de regressao do frontend.
-- Bonus nao atendido: teste automatizado E2E ou de UI do fluxo web completo.
+- Bonus tecnico atendido: testes automatizados cobrem regras criticas da API, smoke test de regressao do frontend e E2E minimo com Playwright para o fluxo critico no navegador.
 
 Observacao de honestidade da validacao:
 
 - Fluxo principal, parecer, PDF e notificacao em tempo real foram validados manualmente pela UI ou por endpoint autenticado conforme registrado acima.
-- Rejeicao por baixo score e filtros/busca foram validados por API/HTTP em 2026-05-19; a UI usa os mesmos endpoints e propaga mensagens de erro por `apiFetch`.
+- Rejeicao por baixo score e filtros/busca foram validados por API/HTTP em 2026-05-19 e tambem cobertos pelo E2E minimo com Playwright.
+
+## E2E minimo com Playwright em 2026-05-19
+
+Adicionado teste E2E em `tests/e2e/teleconsultoria.spec.ts`, com configuracao em `playwright.config.ts` e script `npm run test:e2e`.
+
+Fluxo coberto no navegador:
+
+- Login como solicitante.
+- Tentativa de criar teleconsultoria com `teste-baixo-score.pdf`.
+- Validacao da mensagem de rejeicao com score `0.32` e limiar `0.7`.
+- Criacao de teleconsultoria com `laudo-clinico.pdf`.
+- Busca e filtros no dashboard por paciente, status e intervalo de datas.
+- Login como especialista.
+- Busca do mesmo caso no dashboard.
+- Especialista assume o caso.
+- Especialista registra parecer.
+- Status muda para `Concluida` e parecer aparece na tela.
