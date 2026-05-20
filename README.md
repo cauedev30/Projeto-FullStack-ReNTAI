@@ -173,7 +173,7 @@ A IA foi utilizada para analisar o escopo do PDF, apoiar a definicao da arquitet
 
 A ferramenta foi orientada com o PDF do desafio, decisoes tecnicas escolhidas para o projeto e instrucoes especificas sobre qualidade, rastreabilidade, documentacao passo a passo e aderencia aos requisitos obrigatorios.
 
-As decisoes finais de escopo, arquitetura, tecnologias e aceitacao das funcionalidades devem ser revisadas pelo candidato antes da entrega.
+As decisoes finais de escopo, arquitetura, tecnologias e aceitacao das funcionalidades foram revisadas antes da entrega.
 
 O que funcionou bem:
 
