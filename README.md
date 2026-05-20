@@ -50,6 +50,12 @@ Em outro terminal:
 npm run dev:web
 ```
 
+Atalho equivalente para preparar dependencias, `.env`, migration e seed:
+
+```powershell
+npm run setup
+```
+
 URLs previstas:
 
 - Frontend: `http://localhost:3000`
